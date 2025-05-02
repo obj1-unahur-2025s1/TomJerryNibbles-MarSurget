@@ -1,17 +1,56 @@
 import tomJerryNibbles.*
 
-describe "Grupo de test" {
+describe "TOM Y JERRY TESTS" {
 
-  test "test 1" {
-    assert.equals(100, 50+50)
+  test "caso de prueba 1 " {
+    assert.equals(10, tom.velocidadMax())
+    assert.equals(50, tom.energia())
   }
 
-  test "test 3" {
-    assert.that(true)
+  test "caso de prueba 2" {
+    tom.comer(jerry)
+    assert.equals(15.2, tom.velocidadMax())
+    assert.equals(102, tom.energia())
+
   }
 
-  test "test 4" {
-    assert.notThat(false)
+  test "caso de prueba 3" { 
+    tom.comer(jerry)
+    tom.correr(24)
+    assert.equals(14, tom.velocidadMax())
+    assert.equals(90, tom.energia())
+  }
+ test "caso de prueba 4" {
+    tom.comer(jerry)
+    tom.correr(24)
+    tom.comer(nibbles)
+    assert.equals(18.7, tom.velocidadMax())
+    assert.equals(137, tom.energia())
+  }
+  test "caso de prueba 5" {
+    tom.comer(jerry)
+    tom.correr(24)
+    tom.comer(nibbles)
+    jerry.cumplirAños(1)
+    tom.comer(jerry)
+    assert.equals(25.9, tom.velocidadMax())
+    assert.equals(209, tom.energia())
+  }  test "caso de prueba 6" {
+    tom.comer(jerry)
+    tom.correr(24)
+    tom.comer(nibbles)
+    jerry.cumplirAños(1)
+    tom.comer(jerry)
+    tom.correr(38)
+    assert.equals(24, tom.velocidadMax())
+    assert.equals(190, tom.energia())
   }
 
 }
+test "caza a Jerry si está cerca" {
+  tom.energia() == 50
+  jerry.peso() == 40  // peso = 40
+  tom.cazarRaton(20, jerry)  // 20 / 2 = 10 → puede cazar
+  assert.equals(92, tom.energia())   // 50 - 10 + 12 + 40 = 92
+}
+
